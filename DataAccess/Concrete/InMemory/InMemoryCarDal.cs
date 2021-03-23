@@ -1,9 +1,7 @@
 ﻿using DataAccess.Abstract;
 using Entities.Concrete;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace DataAccess.Concrete.InMemory
 {
@@ -39,9 +37,9 @@ namespace DataAccess.Concrete.InMemory
             return _car;
         }
 
-        public List<Car> GetById(int brandId)
+        public List<Car> GetAllById(int carId)
         {
-            return _car.Where(c => c.BrandId == brandId).ToList();
+            return _car.Where(c => c.CarId == carId).ToList();
         }
 
         public void Update(Car car)

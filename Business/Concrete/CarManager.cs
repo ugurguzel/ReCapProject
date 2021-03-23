@@ -1,9 +1,9 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
-using Entities.Concrete;
+using DataAccess.Concrete.InMemory;
 using System;
+using Entities.Concrete;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Business.Concrete
 {
@@ -15,7 +15,7 @@ namespace Business.Concrete
         {
             _carDal = carDal;
         }
-        
+
         public List<Car> GetAll()
         {
             return _carDal.GetAll();
