@@ -10,16 +10,41 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
+            //CarTest();
+            //CategoryTest();
+        }
 
+        private static void CarTest()
+        {
             CarManager carManager = new CarManager(new EfCarDal());
 
-            foreach (var car in carManager.GetCarDetails())
+            var result = carManager.GetCarDetails();
+
+            if (result.Success == true)
             {
-                Console.WriteLine(car.CarName + " / " + car.ColorName + " / " + car.BrandName + " / " + car.Description + " / " + car.DailyPrice + " TL ");
+                foreach (var car in result.Data)
+                {
+                    Console.WriteLine(car.CarName + "/" + car.BrandName);
+                }
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+        }
+
+        private static void CategoryTest()
+        {
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
+            foreach (var brand in brandManager.GetAll())
+            {
+                Console.WriteLine(brand.BrandName);
 
             }
+        }
+
         //    CarManager carManager = new CarManager(new EfCarDal());
-            
+
         //    //CarAdd(carManager);
 
         //    //foreach (var car in carManager.GetAll())
@@ -50,6 +75,5 @@ namespace ConsoleUI
         //    };
 
         //    carManager.Add(car);
-        }
     }
 }
