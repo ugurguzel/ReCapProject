@@ -13,14 +13,16 @@ namespace ConsoleUI
             //CarTest();
             //CategoryTest();
 
-            UserTest();
+            UserAddedTest();
 
         }
 
-        private static void UserTest()
+        private static void UserAddedTest()
         {
             UserManager userManager = new UserManager(new EfUserDal());
-            userManager.Add(new User{Id = 2, FirstName = "Nurşen", LastName = "GÜZEL", Email = "nursenguzel@hotmail.com.tr", Password = "123456"});
+            userManager.Add(new User{FirstName = "Test", LastName = "GÜZEL", Email = "nursenguzel@hotmail.com.tr", Password = "123456"});
+            Console.WriteLine("Kullanıcı eklendi");
+                                       
         }
 
         private static void CarTest()
