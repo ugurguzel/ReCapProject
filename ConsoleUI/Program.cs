@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using Business.Constant;
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
@@ -20,8 +21,9 @@ namespace ConsoleUI
         private static void UserAddedTest()
         {
             UserManager userManager = new UserManager(new EfUserDal());
-            userManager.Add(new User{FirstName = "Test", LastName = "GÜZEL", Email = "nursenguzel@hotmail.com.tr", Password = "123456"});
-            Console.WriteLine("Kullanıcı eklendi");
+            var result = userManager.Add(new User { FirstName = "Yiğitali", LastName = "GÜZEL", Email = "nursenguzel@hotmail.com.tr", Password = "123456" });
+
+            Console.WriteLine(Messages.UserAdded);
                                        
         }
 
