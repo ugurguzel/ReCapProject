@@ -21,7 +21,7 @@ namespace Business.Concrete
 
         public IResult Add(Car car)
         {
-            if (car.Description.Length >= 2 && car.DailyPrice > 0)
+            if (car.Description.Length >= 10 && car.DailyPrice > 0)
             {
                return new ErrorResult(Messages.CarNameInvalid);
             }
@@ -32,7 +32,13 @@ namespace Business.Concrete
         }
         public IResult Update(Car car)
         {
-            throw new NotImplementedException();
+            if (car.BrandId == 4 )
+            {
+                return new ErrorResult(Messages.BrandNameInvalid);
+            }
+            _carDal.Update(car);
+
+            return new SuccessResult(Messages.CarUpdated);
         }
         public IResult Delete(Car car)
         {
