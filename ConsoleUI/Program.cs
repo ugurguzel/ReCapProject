@@ -11,11 +11,26 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            //CarTest();
+            RentalAddedTest();
+            //UserAddedTest();
+            //CarDetailTest();
             //CategoryTest();
+            //CarAddedTest();
+        }
 
-            UserAddedTest();
 
+        private static void RentalAddedTest()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            var result = rentalManager.Add(new Rental
+            {
+                CarId = 1,
+                CustomerId = 2,
+                RentDate = DateTime.Now,
+                ReturnDate = DateTime.Today
+            });
+
+            Console.WriteLine(result.Message);
         }
 
         private static void UserAddedTest()
@@ -23,11 +38,11 @@ namespace ConsoleUI
             UserManager userManager = new UserManager(new EfUserDal());
             var result = userManager.Add(new User { FirstName = "Yiğitali", LastName = "GÜZEL", Email = "nursenguzel@hotmail.com.tr", Password = "123456" });
 
-            Console.WriteLine(Messages.UserAdded);
+            Console.WriteLine(result.Message);
                                        
         }
 
-        private static void CarTest()
+        private static void CarDetailTest()
         {
             CarManager carManager = new CarManager(new EfCarDal());
 
@@ -56,12 +71,7 @@ namespace ConsoleUI
             }
         }
 
-        private static void CarAdd(CarManager carManager)
-        {
-            //CarAddedTest(carManager);
-        }
-
-        private static void CarAddedTest(CarManager carManager)
+      private static void CarAddedTest(CarManager carManager)
         {
             Car car = new Car
             {
